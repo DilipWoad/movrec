@@ -1,11 +1,30 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { formValidation } from "../utils/formValidation";
 
 const Login = () => {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
   const [signUp, setSignUp] = useState(false);
+  const [errorMessage,setErrorMessage] = useState(null);
+
   const handleSignUp = () => {
     setSignUp(signUp ? false : true);
   };
+
+  const handleFormSubmit = (e)=>{
+    e.preventDefault();
+    console.log(emailRef.current.value);
+    console.log(passwordRef.current.value);
+
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    const validAns = formValidation(email,password);
+    console.log(validAns);
+    setErrorMessage(validAns);
+  }
+
   return (
     <div>
       <Header />
@@ -29,17 +48,21 @@ const Login = () => {
           type="text"
           placeholder="Full Name"
         />)}
+        
         <input
           className="p-2 my-2 w-full rounded-md"
           type="text"
           placeholder="Email address"
+          ref={emailRef}
         />
         <input
           className="p-2 my-2 w-full rounded-md"
           type="password"
           placeholder="Password"
+          ref={passwordRef}
         />
-        <button className="bg-red-700 text-white w-full p-2 my-6 font-semibold rounded-md">
+        {errorMessage!==null && <p className="text-red-500 text-sm font-semibold">{errorMessage}</p>}
+        <button className="bg-red-700 text-white w-full p-2 my-6 font-semibold rounded-md" onClick={handleFormSubmit}>
           {signUp ? "Sign Up" : "Sign In"}
         </button>
 
