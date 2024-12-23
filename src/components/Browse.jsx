@@ -1,7 +1,9 @@
+import Header from "./Header";
+
 const Browse=()=>{
     return(
         <div>
-            This is To Browse Netflix
+            <Header/>
         </div>
     )
 }

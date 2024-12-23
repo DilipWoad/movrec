@@ -2,61 +2,80 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import { formValidation } from "../utils/formValidation";
 import { auth } from "../utils/firebase.js";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addUser } from "../slices/userSlice.js";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const fullNameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const [signUp, setSignUp] = useState(false);
-  const [errorMessage,setErrorMessage] = useState(null);
-
-  
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSignUp = () => {
     setSignUp(signUp ? false : true);
   };
 
-  const handleFormSubmit = (e)=>{
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    // console.log(emailRef.current.value);
-    // console.log(passwordRef.current.value);
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    
-    const validAns = formValidation(email,password);
-    // console.log(validAns);
+
+    const validAns = formValidation(email, password);
 
     setErrorMessage(validAns);
 
-    if(signUp){
+    if (signUp) {
+      const fullName = fullNameRef.current.value;
       //Sign Up Logic
-      createUserWithEmailAndPassword(auth,email,password)
-      .then((userData)=>{
-        console.log(userData);
-        const user = userData.user
-        console.log(user)
-      })
-      .catch((error)=>{
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode +"-"+errorMessage)
-      })
-    }else{
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userData) => {
+          // console.log(userData);
+          const user = userData.user;
+          updateProfile(user, {
+            displayName: fullName,
+            photoURL:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvlv7ddXYmaIy8KaYktoIGX2mi6j_8TrvALQ&s",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(addUser({ uid, email, displayName, photoURL }));
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
       //Sign In logic
-      signInWithEmailAndPassword(auth,email,password)
-      .then((userData)=>{
-        const user = userData.user;
-        console.log(user);
-      })
-      .catch((error)=>{
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorMessage(errorCode+"-"+errorMessage);
-      })
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userData) => {
+          const user = userData.user;
+          // console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
     }
-
-  }
+  };
 
   return (
     <div>
@@ -76,12 +95,15 @@ const Login = () => {
           type="text"
           placeholder="Full Name"
         /> */}
-        {signUp && (<input
-          className='p-2 my-2 w-full rounded-md '
-          type="text"
-          placeholder="Full Name"
-        />)}
-        
+        {signUp && (
+          <input
+            ref={fullNameRef}
+            className="p-2 my-2 w-full rounded-md "
+            type="text"
+            placeholder="Full Name"
+          />
+        )}
+
         <input
           className="p-2 my-2 w-full rounded-md"
           type="text"
@@ -94,13 +116,20 @@ const Login = () => {
           placeholder="Password"
           ref={passwordRef}
         />
-        {errorMessage!==null && <p className="text-red-500 text-sm font-semibold">{errorMessage}</p>}
-        <button className="bg-red-700 text-white w-full p-2 my-6 font-semibold rounded-md" onClick={handleFormSubmit}>
+        {errorMessage !== null && (
+          <p className="text-red-500 text-sm font-semibold">{errorMessage}</p>
+        )}
+        <button
+          className="bg-red-700 text-white w-full p-2 my-6 font-semibold rounded-md"
+          onClick={handleFormSubmit}
+        >
           {signUp ? "Sign Up" : "Sign In"}
         </button>
 
         <p className="text-white text-sm">
-          <span className="font-normal text-gray-500">{signUp ?"Already have an account?" : "New to Netflix?" }</span>
+          <span className="font-normal text-gray-500">
+            {signUp ? "Already have an account?" : "New to Netflix?"}
+          </span>
           <span
             className="font-semibold  hover:cursor-pointer hover:underline"
             onClick={handleSignUp}
