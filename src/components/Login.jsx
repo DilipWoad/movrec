@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { formValidation } from "../utils/formValidation";
+import { auth } from "../utils/firebase.js";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -8,21 +10,52 @@ const Login = () => {
   const [signUp, setSignUp] = useState(false);
   const [errorMessage,setErrorMessage] = useState(null);
 
+  
+
   const handleSignUp = () => {
     setSignUp(signUp ? false : true);
   };
 
   const handleFormSubmit = (e)=>{
     e.preventDefault();
-    console.log(emailRef.current.value);
-    console.log(passwordRef.current.value);
+    // console.log(emailRef.current.value);
+    // console.log(passwordRef.current.value);
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-
+    
     const validAns = formValidation(email,password);
-    console.log(validAns);
+    // console.log(validAns);
+
     setErrorMessage(validAns);
+
+    if(signUp){
+      //Sign Up Logic
+      createUserWithEmailAndPassword(auth,email,password)
+      .then((userData)=>{
+        console.log(userData);
+        const user = userData.user
+        console.log(user)
+      })
+      .catch((error)=>{
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode +"-"+errorMessage)
+      })
+    }else{
+      //Sign In logic
+      signInWithEmailAndPassword(auth,email,password)
+      .then((userData)=>{
+        const user = userData.user;
+        console.log(user);
+      })
+      .catch((error)=>{
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode+"-"+errorMessage);
+      })
+    }
+
   }
 
   return (
