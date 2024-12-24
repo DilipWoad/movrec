@@ -7,13 +7,12 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { addUser } from "../slices/userSlice.js";
+import { AVATAR_LOGO, NETFLIX_BACKGROUND } from "../utils/constant.js";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -44,13 +43,11 @@ const Login = () => {
           const user = userData.user;
           updateProfile(user, {
             displayName: fullName,
-            photoURL:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvlv7ddXYmaIy8KaYktoIGX2mi6j_8TrvALQ&s",
+            photoURL:AVATAR_LOGO,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName, photoURL }));
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -67,7 +64,6 @@ const Login = () => {
         .then((userData) => {
           const user = userData.user;
           // console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -82,7 +78,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/150c4b42-11f6-4576-a00f-c631308b1e43/web/IN-en-20241216-TRIFECTA-perspective_915a9055-68ad-4e81-b19a-442f1cd134dc_small.jpg"
+          src={NETFLIX_BACKGROUND}
           alt="background"
         />
       </div>
@@ -90,11 +86,6 @@ const Login = () => {
         <h1 className="text-white text-2xl my-4 font-bold">
           {signUp ? "Sign Up" : "Sign In"}
         </h1>
-        {/* <input
-          className={`p-2 my-2 w-full rounded-md ${signUp ? 'block': 'hidden'}`}
-          type="text"
-          placeholder="Full Name"
-        /> */}
         {signUp && (
           <input
             ref={fullNameRef}
@@ -137,7 +128,6 @@ const Login = () => {
             {signUp ? " Sign In." : " Sign up now."}
           </span>
         </p>
-        {/* {signUp ?<p className="text-white text-sm"><span className="font-normal text-gray-500">Already have an account?</span> <span className="font-semibold  hover:cursor-pointer hover:underline" onClick={handleSignUp}>Sign In.</span></p> : <p className="text-white text-sm"><span className="font-normal text-gray-500">New to Netflix?</span> <span className="font-semibold  hover:cursor-pointer hover:underline" onClick={handleSignUp}>Sign up now.</span></p>} */}
       </form>
     </div>
   );

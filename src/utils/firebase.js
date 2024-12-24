@@ -9,12 +9,12 @@ import { getAuth } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "movrec-gpt-bea2b.firebaseapp.com",
-  projectId: "movrec-gpt-bea2b",
-  storageBucket: "movrec-gpt-bea2b.firebasestorage.app",
-  messagingSenderId: "1072663397941",
-  appId: "1:1072663397941:web:510a7c0d19d4bedf32137c",
-  measurementId: "G-TCT3GEJWCS"
+  authDomain:import.meta.env.VITE_AUTH_DOMAIN ,
+  projectId:import.meta.env.VITE_PROJECT_ID ,
+  storageBucket:import.meta.env.VITE_STORAGE_BUCKET ,
+  messagingSenderId:import.meta.env.VITE_MESSAGING_SENDER_ID ,
+  appId:import.meta.env.VITE_APP_ID ,
+  measurementId:import.meta.env.VITE_MEASUREMENT_ID 
 };
 
 // Initialize Firebase
