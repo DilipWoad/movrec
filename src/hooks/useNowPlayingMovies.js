@@ -8,7 +8,6 @@ export const useNowPlayingMovies = () => {
   const fetchingTmdbApi = async () => {
     const data = await fetch(TMDB_URL, options);
     const res = await data.json();
-    console.log(res);
     dispatch(addNowPlayingMovies(res.results));
   };
 
