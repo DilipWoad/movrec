@@ -16,6 +16,6 @@ const options = {
     Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`,
   },
 };
-const MOVIE_IMG = "https://image.tmdb.org/t/p/";
+const MOVIE_IMG = "https://image.tmdb.org/t/p/w200";
 
 export { NETFLIX_LOGO, NETFLIX_BACKGROUND, AVATAR_LOGO, TMDB_URL, options ,MOVIE_IMG };
