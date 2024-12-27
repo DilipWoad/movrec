@@ -1,17 +1,38 @@
+import { useState } from "react";
 import { MOVIE_IMG } from "../utils/constant";
 
-const VideoTitle=({title,movieId,overview,logo})=>{
-    return(
-        <div className="pt-24 px-12">
-            <h1 className="text-2xl font-semibold mb-3">{title}</h1>
-            <img src={`${MOVIE_IMG}${logo}`}/>
-            <p className="w-1/2 py-6 font-semibold">{overview}</p>
-            <div className="">
-                <button className="bg-slate-600 text-white w-24 px-4 py-2 mr-2">▷ Play</button>
-                <button className="bg-black text-white px-4 py-2 ">More Info</button>
-            </div>
+const VideoTitle = ({ title, movieId, overview, logo }) => {
+  const [description, setDescription] = useState(false);
+  const handleOverview = () => {
+    return setDescription(!description);
+  };
+  return (
+    <div className="w-full aspect-video flex items-center px-12 absolute z-10 bg-gradient-to-r from-black">
+      {/* <h1 className="text-2xl font-semibold mb-3">{title}</h1> */}
+      <div className="">
+        <img className="hover:cursor-pointer hover:shadow-2xl hover:shadow-gray-700" src={`${MOVIE_IMG}${logo}`} />
+        <div className="w-1/2 py-6">
+          <p className="font-semibold  text-white">
+            {description ? overview : overview.substring(0, 55)}{" "}
+            <span
+              onClick={handleOverview}
+              className=" text-white font-bold  opacity-50 rounded-md hover:opacity-100 hover:cursor-pointer"
+            >
+              {description ? "Read Less" : "Read More..."}
+            </span>
+          </p>
         </div>
-    )
-}
+        <div className="">
+          <button className="bg-white text-black font-semibold w-24 px-4 py-2 mr-2 rounded-lg hover:opacity-70">
+            ▷ Play
+          </button>
+          <button className="bg-black text-white px-4 py-2 rounded-lg hover:opacity-80">
+            ⓘ More Info
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default VideoTitle;
