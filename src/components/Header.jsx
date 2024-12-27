@@ -7,6 +7,7 @@ import { addUser,removeUser } from "../slices/userSlice";
 import { NETFLIX_LOGO } from "../utils/constant";
 
 const Header = () => {
+  //TODO: create custom hook
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(()=>{

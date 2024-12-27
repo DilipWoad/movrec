@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { MOVIE_IMG } from "../utils/constant";
 
-const VideoTitle = ({ title, movieId, overview, logo }) => {
+const VideoTitle = ({ title,overview}) => {
   const [description, setDescription] = useState(false);
   const handleOverview = () => {
     return setDescription(!description);
   };
   return (
     <div className="w-full aspect-video flex items-center px-12 absolute z-10 bg-gradient-to-r from-black">
-      {/* <h1 className="text-2xl font-semibold mb-3">{title}</h1> */}
       <div className="">
-        <img className="hover:cursor-pointer hover:shadow-2xl hover:shadow-gray-700" src={`${MOVIE_IMG}${logo}`} />
+        {/* <img className="hover:cursor-pointer hover:shadow-2xl hover:shadow-gray-700" src={`${MOVIE_IMG}${logo}`} /> */}
+        <h1 className="text-white text-5xl font-bold">{title}</h1>
         <div className="w-1/2 py-6">
           <p className="font-semibold  text-white">
             {description ? overview : overview.substring(0, 55)}{" "}
