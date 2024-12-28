@@ -7,35 +7,39 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../slices/userSlice.js";
 import { AVATAR_LOGO, NETFLIX_BACKGROUND } from "../utils/constant.js";
+import { AddErrorMessage } from "../slices/errorSlice.js";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const error = useSelector((store)=>store?.error?.errorMessage);
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
   const [signUp, setSignUp] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSignUp = () => {
-    setSignUp(signUp ? false : true);
+    setSignUp(!signUp) ;
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+  const email = emailRef?.current?.value;
+  const password = passwordRef?.current?.value;
+  const fullName = fullNameRef?.current?.value;
 
-    const validAns = formValidation(email, password);
+  //   //check correct email & pass format
+     const validAns = formValidation(email, password);
 
-    setErrorMessage(validAns);
+     dispatch(AddErrorMessage(validAns));
 
+    //useHook start here
     if (signUp) {
-      const fullName = fullNameRef.current.value;
       //Sign Up Logic
       createUserWithEmailAndPassword(auth, email, password)
         .then((userData) => {
@@ -50,29 +54,24 @@ const Login = () => {
               dispatch(addUser({ uid, email, displayName, photoURL }));
             })
             .catch((error) => {
-              setErrorMessage(error.message);
+              dispatch(AddErrorMessage(error.message));
             });
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          console.log(error.message)
+          // dispatch(AddErrorMessage(error.message));
         });
     } else {
       //Sign In logic
       signInWithEmailAndPassword(auth, email, password)
         .then((userData) => {
           const user = userData.user;
-          // console.log(user);
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + "-" + errorMessage);
+          dispatch(AddErrorMessage(error.message));
         });
-    }
-  };
-
+    } 
+  }
   return (
     <div>
       <Header />
@@ -107,8 +106,8 @@ const Login = () => {
           placeholder="Password"
           ref={passwordRef}
         />
-        {errorMessage !== null && (
-          <p className="text-red-500 text-sm font-semibold">{errorMessage}</p>
+        {error !== null && (
+          <p className="text-red-500 text-sm font-semibold">{error}</p>//Add Error Message
         )}
         <button
           className="bg-red-700 text-white w-full p-2 my-6 font-semibold rounded-md"

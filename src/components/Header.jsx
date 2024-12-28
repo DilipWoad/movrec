@@ -1,34 +1,13 @@
-import { signOut,onAuthStateChanged } from "firebase/auth";
+import { signOut} from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router";
-import {useSelector,useDispatch} from 'react-redux';
-import { useEffect } from "react";
-import { addUser,removeUser } from "../slices/userSlice";
+import {useSelector} from 'react-redux';
 import { NETFLIX_LOGO } from "../utils/constant";
+import { useHeaderAuthState } from "../hooks/useHeaderAuthState";
 
 const Header = () => {
-  //TODO: create custom hook
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  useEffect(()=>{
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const {uid,email,displayName,photoURL} = user;
-          // User is signed In
-          dispatch(addUser({uid,email,displayName,photoURL}))
-          navigate('/browse');
-        } else {
-          // User is signed out
-          dispatch(removeUser());
-          navigate('/')
-        }
-    });
-
-    //Unsubscribe when component unmount
-    return ()=> unsubscribe();
-  },[])
-
   const userData = useSelector((store)=>store.user);
+  //TODO: create custom hook
+  useHeaderAuthState();
   const handleLogout = () => {
     signOut(auth);
   };
