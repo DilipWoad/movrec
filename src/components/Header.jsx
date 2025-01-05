@@ -23,7 +23,7 @@ const Header = () => {
         <div className="flex items-center">
           <img
             className="w-10 h-10"
-            src={userData.photoURL}
+            src={userData?.photoURL}
             alt="user-icon"
           />
           <button
