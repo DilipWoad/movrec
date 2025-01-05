@@ -5,17 +5,24 @@ import SecondaryContainer from "./SecodaryContainer";
 import { usePopularMovies } from "../hooks/usePopularMovies";
 import { useTopRatedMovies } from "../hooks/useTopRatedMovies";
 import { useUpcomingMovies } from "../hooks/useUpcomingMovies";
+import GeminiSearch from "./GeminiSearch";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
+  const geminiStatus = useSelector((store)=>store?.gemini?.GeminiStatus)
     useNowPlayingMovies();
     usePopularMovies();
     useTopRatedMovies();
     useUpcomingMovies();
   return (
-    <div>
+    <div className="">
       <Header />
-      <MainContainer/>
-      <SecondaryContainer/>
+      {geminiStatus ? <GeminiSearch/> : (
+        <>
+          <MainContainer/>
+          <SecondaryContainer/>
+        </>
+      )}
     </div>
   );
 };
