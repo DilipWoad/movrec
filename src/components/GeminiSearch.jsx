@@ -13,5 +13,4 @@ const GeminiSearch=()=>{
         </div>
     )
 }
-
 export default GeminiSearch;

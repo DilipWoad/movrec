@@ -5,6 +5,7 @@ import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constant";
 import { useHeaderAuthState } from "../hooks/useHeaderAuthState";
 import { changeGeminiState } from "../slices/geminiSearchSlice";
 import { changeLanguage } from "../slices/languageSlice";
+import logo from '../assets/images/MovrecLogo.png'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Header = () => {
 
   return (
     <div className="absolute px-[54px] py-2 bg-gradient-to-b from-black z-50 w-screen flex justify-between">
-      <img className="w-48" src={NETFLIX_LOGO} alt="logo" />
+      <img className="w-48" src={logo} alt="logo" />
       {auth.currentUser && (
         <div className="flex items-center">
           {geminiStatus && (

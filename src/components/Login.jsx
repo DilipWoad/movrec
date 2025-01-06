@@ -118,7 +118,7 @@ const Login = () => {
 
         <p className="text-white text-sm">
           <span className="font-normal text-gray-500">
-            {signUp ? "Already have an account?" : "New to Netflix?"}
+            {signUp ? "Already have an account?" : "New to Movrec?"}
           </span>
           <span
             className="font-semibold  hover:cursor-pointer hover:underline"

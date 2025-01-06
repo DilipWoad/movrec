@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import googleGemini from "../Gemini/googleGemini.js"
+// import googleGemini from "../Gemini/googleGemini.js"
 
 const GeminiMovieSuggestion=()=>{
     useEffect(()=>{
-        googleGemini();
+        // googleGemini();
     },[])
     return(
         <div className="z-20">
