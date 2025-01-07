@@ -9,10 +9,11 @@ import logo from '../assets/images/MovrecLogo.png'
 
 const Header = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((store) => store.user);
+  const userData = useSelector((store) => store?.user);
   const geminiStatus = useSelector((store) => store?.gemini?.GeminiStatus);
   //TODO: create custom hook
   useHeaderAuthState();
+
   const handleLogout = () => {
     signOut(auth);
   };

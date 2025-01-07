@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { options, UPCOMING_URL } from "../utils/urls/tmdbUrls";
+import { options, UPCOMING_URL } from "../utils/TMDBurls/tmdbUrls";
 import { useDispatch } from "react-redux";
 import { addUpcomingMovies } from "../slices/movieSlice";
 

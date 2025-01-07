@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
-import { formValidation } from "../utils/formValidation";
+import { formValidation } from "../utils/FormValidation/formValidation";
 import { auth } from "../utils/Firebase/firebase.js";
 import {
   createUserWithEmailAndPassword,
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../slices/userSlice.js";
 import { AVATAR_LOGO, NETFLIX_BACKGROUND } from "../utils/constant.js";
 import { AddErrorMessage } from "../slices/errorSlice.js";
+// import { useUserSignInAuthentication, useUserSignUpAuthentication } from "../hooks/useUserAuthentication.js";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,20 @@ const Login = () => {
           console.log(error.message)
           // dispatch(AddErrorMessage(error.message));
         });
+
+        
+        ////////////////////// FOR HOOK //////////////////////////////
+
+      // try {
+      //   const { uid, email, displayName, photoURL } = useUserSignUpAuthentication(emailR,password,fullName);
+      //   dispatch(addUser({ uid, email, displayName, photoURL }));
+      // } catch (error) {
+      //   dispatch(AddErrorMessage(error.message));
+      // }
+
+      ////////////////////// FOR HOOK //////////////////////////////
+
+
     } else {
       //Sign In logic
       signInWithEmailAndPassword(auth, email, password)
@@ -70,6 +85,16 @@ const Login = () => {
         .catch((error) => {
           dispatch(AddErrorMessage(error.message));
         });
+
+      ////////////////////// FOR HOOK //////////////////////////////
+
+      // try {
+      //   useUserSignInAuthentication(emailR,password);
+      // } catch (error) {
+      //   dispatch(AddErrorMessage(error.message));
+      // }
+
+      ////////////////////// FOR HOOK //////////////////////////////
     } 
   }
   return (

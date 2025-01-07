@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { options, TOP_RATED_URL } from "../utils/urls/tmdbUrls";
+import { options, TOP_RATED_URL } from "../utils/TMDBurls/tmdbUrls";
 import { useDispatch } from "react-redux";
 import { addTopRatedMovies } from "../slices/movieSlice";
 
