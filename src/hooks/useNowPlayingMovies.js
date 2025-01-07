@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { options, NOW_PLAYING_URL } from "../utils/constant";
+import { options, NOW_PLAYING_URL } from "../utils/urls/tmdbUrls";
 import { useDispatch } from "react-redux";
 import { addNowPlayingMovies } from "../slices/movieSlice";
 

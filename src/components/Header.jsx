@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth } from "../utils/Firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constant";
 import { useHeaderAuthState } from "../hooks/useHeaderAuthState";

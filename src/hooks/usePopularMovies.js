@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { options, POPULAR_URL } from "../utils/constant";
+import { options, POPULAR_URL } from "../utils/urls/tmdbUrls";
 import { useDispatch } from "react-redux";
 import { addPopularMovies } from "../slices/movieSlice";
 

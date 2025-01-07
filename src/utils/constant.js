@@ -6,25 +6,6 @@ const NETFLIX_BACKGROUND =
 const AVATAR_LOGO =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvlv7ddXYmaIy8KaYktoIGX2mi6j_8TrvALQ&s";
 
-const NOW_PLAYING_URL =
-  "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
-
-const POPULAR_URL =
-  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-
-const TOP_RATED_URL =
-  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
-
-const UPCOMING_URL =
-  "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
-
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`,
-  },
-};
 const MOVIE_IMG = "https://image.tmdb.org/t/p/w200";
 
 const SUPPORTED_LANGUAGES = [
@@ -37,11 +18,6 @@ export {
   NETFLIX_LOGO,
   NETFLIX_BACKGROUND,
   AVATAR_LOGO,
-  NOW_PLAYING_URL,
-  POPULAR_URL,
-  TOP_RATED_URL,
-  UPCOMING_URL,
-  options,
   MOVIE_IMG,
   SUPPORTED_LANGUAGES
 };

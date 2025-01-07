@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { formValidation } from "../utils/formValidation";
-import { auth } from "../utils/firebase.js";
+import { auth } from "../utils/Firebase/firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,

@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
-import { auth } from "../utils/firebase";
+import { auth } from "../utils/Firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { changeAuth } from "../slices/authenticateSlice";
 import { Navigate } from "react-router";
