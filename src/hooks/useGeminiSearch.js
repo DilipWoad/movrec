@@ -1,6 +1,7 @@
 import { model } from "../utils/Gemini/googleGemini";
 import { options, SEARCH_MOVIE_URL } from "../utils/TMDBurls/tmdbUrls";
 
+
 const useGeminiSearch = async(searchPrompt)=>{
     const fetchMovieFromTMDB=async(movie)=>{
         const data = await fetch(SEARCH_MOVIE_URL+movie+"&include_adult=false&language=en-US&page=1",options);
@@ -17,7 +18,7 @@ const useGeminiSearch = async(searchPrompt)=>{
     const geminiMovie = result?.response?.text().split(",");
     console.log(geminiMovie);
 
-    const arrayOfPromies = geminiMovie.map((movie)=> fetchMovieFromTMDB(movie.trim())) //this will return Array of Promises
+    const arrayOfPromies =geminiMovie.map((movie)=>fetchMovieFromTMDB(movie.trim())) //this will return Array of Promises
 
     const geminiResults = await Promise.all(arrayOfPromies) //this will resolve array of promises and return the results and not the promise
     console.log(geminiResults);

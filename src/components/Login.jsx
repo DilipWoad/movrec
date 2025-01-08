@@ -83,7 +83,7 @@ const Login = () => {
           const user = userData.user;
         })
         .catch((error) => {
-          dispatch(AddErrorMessage(error.message));
+          dispatch(AddErrorMessage(error));
         });
 
       ////////////////////// FOR HOOK //////////////////////////////

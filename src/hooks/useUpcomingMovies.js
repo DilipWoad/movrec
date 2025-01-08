@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { options, UPCOMING_URL } from "../utils/TMDBurls/tmdbUrls";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from "../slices/movieSlice";
 
 export const useUpcomingMovies = () => {
+  const upcomingMovies = useSelector((store)=>store.movie.upcoming);
   const dispatch = useDispatch();
   const fetchingTmdbApi = async () => {
     const data = await fetch(UPCOMING_URL, options);
@@ -12,6 +13,6 @@ export const useUpcomingMovies = () => {
   };
 
   useEffect(() => {
-    fetchingTmdbApi();
+    !upcomingMovies && fetchingTmdbApi();
   }, []);
 };

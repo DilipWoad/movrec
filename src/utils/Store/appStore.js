@@ -5,6 +5,8 @@ import errorReducer from "../../slices/errorSlice";
 import authReducer from "../../slices/authenticateSlice";
 import geminiReducer from "../../slices/geminiSearchSlice";
 import languageReducer from "../../slices/languageSlice";
+
+
 const appStore = configureStore({
   reducer: {
     user: userReducer,
@@ -14,6 +16,7 @@ const appStore = configureStore({
     gemini: geminiReducer,
     lang : languageReducer
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export default appStore;

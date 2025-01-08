@@ -26,8 +26,8 @@ const GeminiSearchBar=()=>{
     };
 
     return(
-        <div className="pt-[15%] flex justify-center">
-            <form className="bg-purple-500 w-1/2 grid grid-cols-12" onSubmit={(e)=>e.preventDefault()}>
+        <div className="pt-[10%] flex justify-center">
+            <form className="bg-black w-1/2 grid grid-cols-12 rounded-md opacity-90" onSubmit={(e)=>e.preventDefault()}>
                 <input ref={prompt} className="col-span-9 p-2 m-2 placeholder:text-gray-400" type="text" placeholder={lang[language].geminiPlaceholder}/>
                 <button onClick={handleSearchClick} className="bg-red-700 col-span-3 m-2 rounded-sm text-white font-bold">{lang[language].search}</button>
             </form>

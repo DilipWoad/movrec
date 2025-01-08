@@ -6,7 +6,7 @@ const GeminiSearch=()=>{
     return(
         <div>
             <div className="absolute -z-10">
-                <img src={NETFLIX_BACKGROUND} alt="background"/>
+                <img className="fixed" src={NETFLIX_BACKGROUND} alt="background"/>
             </div>
             <GeminiSearchBar/>
             <GeminiMovieSuggestion/>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MOVIE_IMG } from "../utils/constant";
 
 const VideoTitle = ({ title,overview}) => {
   const [description, setDescription] = useState(false);
