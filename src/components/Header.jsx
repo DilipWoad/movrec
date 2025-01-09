@@ -1,11 +1,11 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/Firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { NETFLIX_LOGO, SUPPORTED_LANGUAGES } from "../utils/constant";
+import { SUPPORTED_LANGUAGES } from "../utils/constant";
 import { useHeaderAuthState } from "../hooks/useHeaderAuthState";
 import { changeGeminiState } from "../slices/geminiSearchSlice";
 import { changeLanguage } from "../slices/languageSlice";
-import logo from '../assets/images/MovrecLogo.png'
+import logo from '../assets/images/MovrecLogoCopy.png'
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -28,13 +28,13 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute px-[54px] py-2 bg-gradient-to-b from-black z-50 w-screen flex justify-between">
-      <img className="w-48" src={logo} alt="logo" />
+    <div className="bg-black relative  md:absolute px-[54px] py-2 bg-gradient-to-b from-black z-50 w-screen flex flex-col md:flex-row items-center md:justify-between">
+      <img className="w-48 mb-5" src={logo} alt="logo" />
       {auth.currentUser && (
-        <div className="flex items-center">
+        <div className="flex w-full md:items-center justify-between  md:w-[28%]">
           {geminiStatus && (
             <select
-              className="py-1 text-lg rounded-sm"
+              className="py-1 text-sm md:text-lg rounded-sm"
               name="lang"
               onChange={handleLanguageChange}
             >
@@ -45,21 +45,23 @@ const Header = () => {
               ))}
             </select>
           )}
+          <div className="md:flex md:items-center md:justify-end flex  w-full justify-between">
           <button
-            className={`bg-blue-800 mx-3 py-1 px-2 rounded-md text-lg ${
+            className={`bg-blue-800 md:mx-3 py-1 px-2 rounded-md text-sm md:text-lg ${
               geminiStatus && "bg-red-700 text-white"
             }`}
             onClick={handleGemini}
           >
             {geminiStatus ? "Home🏠︎" : "Gemini✧"}
           </button>
-          <img className="w-10 h-10" src={userData?.photoURL} alt="user-icon" />
+          <img className="w-10 h-10 hidden md:block" src={userData?.photoURL} alt="user-icon" />
           <button
             onClick={handleLogout}
-            className="bg-red-700 w-100  text-white px-2 py-1 rounded-md mx-3 text-lg"
+            className="bg-red-700 w-100  text-white px-2 py-1 rounded-md md:mx-3 text-sm md:text-lg"
           >
             Sign Out
           </button>
+          </div>
         </div>
       )}
     </div>

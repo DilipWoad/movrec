@@ -20,7 +20,7 @@ const Body = () => {
   ]);
 
   return (
-    <div>
+    <div className="">
       <RouterProvider router={bodyRoutes}></RouterProvider>
     </div>
   );

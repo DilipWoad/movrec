@@ -9,12 +9,12 @@ const SecondaryContainer=()=>{
     const upcomingMovie = movieData?.upcoming;
     return(
         nowPlaying &&(
-            <div className="bg-black">
-                <div className="relative -mt-64 pl-2 z-20">
-                    <MovieList heading={"Playing Now"} movies={nowPlaying} css={""}/>
-                    <MovieList heading={"Popular"} movies={popularMovie}/>
-                    <MovieList heading={"Top Rated"} movies={topRatedMovie}/>
-                    <MovieList heading={"Upcoming Movies"} movies={upcomingMovie}/>
+            <div className="bg-black ">
+                <div className="relative -mt-16 md:-mt-64 md:pl-2 z-20 ">
+                    <MovieList heading={"Playing Now"} movies={nowPlaying} css={"px-4"}/>
+                    <MovieList heading={"Popular"} movies={popularMovie} css={"px-4"}/>
+                    <MovieList heading={"Top Rated"} movies={topRatedMovie} css={"px-4"}/>
+                    <MovieList heading={"Upcoming Movies"} movies={upcomingMovie} css={"px-4"}/>
                 </div> 
             </div>
         )

@@ -8,7 +8,7 @@ const GeminiMovieSuggestion=()=>{
     const geminiMovieName = movies?.geminiSearchedMovieNames;
     const geminTMDBResults = movies?.geminiSearchedMovieResults;
     return(
-        <div className="bg-black m-10 opacity-90 rounded-md">
+        <div className="bg-black m-2 md:m-10 opacity-90 rounded-md">
             {geminTMDBResults?.map((movie,index)=>(
                 <MovieList key={geminiMovieName[index]} heading={geminiMovieName[index]} movies={movie}/>
             ))}
