@@ -55,7 +55,7 @@ const Login = () => {
               dispatch(addUser({ uid, email, displayName, photoURL }));
             })
             .catch((error) => {
-              dispatch(AddErrorMessage(error.message));
+              dispatch(AddErrorMessage(error?.message));
             });
         })
         .catch((error) => {
@@ -83,7 +83,7 @@ const Login = () => {
           const user = userData.user;
         })
         .catch((error) => {
-          dispatch(AddErrorMessage(error));
+          dispatch(AddErrorMessage(error?.message));
         });
 
       ////////////////////// FOR HOOK //////////////////////////////

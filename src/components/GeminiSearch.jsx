@@ -4,8 +4,8 @@ import GeminiSearchBar from "./GeminiSearchBar";
 
 const GeminiSearch=()=>{
     return(
-        <div>
-            <div className="absolute -z-10 ">
+        <div className="">
+            <div className="absolute -z-10">
                 <img className="h-screen object-cover md:w-screen md:fixed" src={NETFLIX_BACKGROUND} alt="background"/>
             </div>
             <GeminiSearchBar/>

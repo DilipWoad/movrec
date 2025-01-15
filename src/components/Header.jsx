@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-black relative  md:absolute px-[54px] py-2 bg-gradient-to-b from-black z-50 w-screen flex flex-col md:flex-row items-center md:justify-between">
+    <div className="bg-black relative  md:absolute px-[54px] py-2 md:bg-gradient-to-b md:from-black z-50 w-screen flex flex-col md:flex-row items-center md:justify-between">
       <img className="w-48 mb-5" src={logo} alt="logo" />
       {auth.currentUser && (
         <div className="flex w-full md:items-center justify-between  md:w-[28%]">
