@@ -11,7 +11,7 @@ const GeminiSearchBar=()=>{
     const language = useSelector((store)=>store?.lang?.selectedLanguage);
 
     const handleSearchClick = async()=>{
-        console.log(prompt?.current?.value)
+        // console.log(prompt?.current?.value)
         const searchPrompt = prompt?.current?.value;
         //useHook here
         try {

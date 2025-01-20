@@ -13,13 +13,13 @@ const MovieInfo=()=>{
         const data =  await fetch(MOVIE_CREDITS_URL+movieId+"/credits?language=en-US",options);
         const credits = await data.json();
         dispatch(addCreditsInfo(credits));
-        console.log(credits);
+        // console.log(credits);
     }
     const movieInformation = async()=>{
         const data = await fetch(MOVIE_CREDITS_URL+movieId,options);
         const movieInfo = await data.json();
         dispatch(addMovieInfo(movieInfo));
-        console.log(movieInfo);
+        // console.log(movieInfo);
     }
     useEffect(()=>{
         movieCredits();

@@ -14,9 +14,9 @@ const useGeminiSearch = async(searchPrompt)=>{
     ". Only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal,Koi Mil Gaya"
 
     const result = await model.generateContent(geminiQuery);
-    console.log(result?.response?.text()) //it give direct text
+    //console.log(result?.response?.text()) //it give direct text
     const geminiMovie = result?.response?.text().split(",");
-    console.log(geminiMovie);
+    // console.log(geminiMovie);
 
     const arrayOfPromies =geminiMovie.map((movie)=>fetchMovieFromTMDB(movie.trim())) //this will return Array of Promises
 
