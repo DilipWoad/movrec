@@ -6,6 +6,7 @@ const MainContainer=()=>{
     const movies = useSelector((store)=>store.movie?.playingNow);
     if(!movies) return;
     const mainMovie = movies[0];
+    console.log(mainMovie)
     const {id,title,overview} = mainMovie;
     return(
         <div className="bg-black">

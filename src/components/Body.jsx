@@ -2,7 +2,7 @@ import Browse from "./Browse";
 import Login from "./Login";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import PrivateRoute from "./PrivateRoute.jsx";
-
+import MovieInfo from "./MovieInfo.jsx";
 const Body = () => {
   const bodyRoutes = createBrowserRouter([
     {
@@ -17,6 +17,14 @@ const Body = () => {
         </PrivateRoute>
       ),
     },
+    {
+      path:"/movie",
+      element:(
+        <PrivateRoute>
+          <MovieInfo />
+        </PrivateRoute>
+      )
+    }
   ]);
 
   return (
