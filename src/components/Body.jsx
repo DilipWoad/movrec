@@ -2,7 +2,7 @@ import Browse from "./Browse";
 import Login from "./Login";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import PrivateRoute from "./PrivateRoute.jsx";
-import MovieInfo from "./MovieInfo.jsx";
+import MovieInfo from "./MovieInfoComponents/MovieInfo.jsx";
 const Body = () => {
   const bodyRoutes = createBrowserRouter([
     {

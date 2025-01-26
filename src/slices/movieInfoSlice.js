@@ -4,7 +4,10 @@ const movieInfoSlice = createSlice({
     name:'info',
     initialState:{
         credits:null,
+        director:null,
         movieInfo:null,
+        trailerVideo:null,
+        similarMovies:null
     },
     reducers:{
         addCreditsInfo:(state,action)=>{
@@ -12,10 +15,19 @@ const movieInfoSlice = createSlice({
         },
         addMovieInfo:(state,action)=>{
             state.movieInfo = action.payload;
+        },
+        addTrailerVid:(state,action)=>{
+            state.trailerVideo=action.payload;
+        },
+        addSimilarMovies:(state,action)=>{
+            state.similarMovies=action.payload;
+        },
+        addDirector:(state,action)=>{
+            state.director=action.payload;
         }
     }
 })
 
 export default movieInfoSlice.reducer;
 
-export const{addCreditsInfo,addMovieInfo} = movieInfoSlice.actions;
+export const{addCreditsInfo,addMovieInfo,addSimilarMovies,addTrailerVid,addDirector} = movieInfoSlice.actions;

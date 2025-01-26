@@ -13,7 +13,7 @@ const UPCOMING_URL =
 const SEARCH_MOVIE_URL = 
     "https://api.themoviedb.org/3/search/movie?query=";
   
-const MOVIE_CREDITS_URL = 'https://api.themoviedb.org/3/movie/';
+const MOVIE_INFO_URL = 'https://api.themoviedb.org/3/movie/';
 // const MOVIE_INFO_URL = 'https://api.themoviedb.org/3/movie/';
 
   const options = {
@@ -30,6 +30,6 @@ export{
     TOP_RATED_URL,
     UPCOMING_URL,
     SEARCH_MOVIE_URL,
-    MOVIE_CREDITS_URL,
+    MOVIE_INFO_URL,
     options
 }
