@@ -3,15 +3,13 @@ import { MOVIE_IMG } from "../../utils/constant";
 
 const MovieDetailsContainer=({movieInfo})=>{
     const {title,vote_average,vote_count,status,runtime,release_date,overview,original_language,id,genres,backdrop_path,poster_path} = movieInfo;
-    console.log(genres)
     const directed = useSelector((store)=>store?.movieInfo?.director);
-    console.log("dfager",directed)
     return(
         <>
         <div className="bg-slate-300 w-[100%] p-2 flex space-x-1 sm:mx-2 rounded-xl">
             <div className="  flex  w-40">
                 <div className="w-full">
-                    <img src={MOVIE_IMG+poster_path} alt="movie_poster" />
+                    <img className="hover:shadow-2xl hover:shadow-black rounded-lg" src={MOVIE_IMG+poster_path} alt="movie_poster" />
                     <div className="mt-2 text-lg sm:text-3xl font-bold">{vote_average}<span className="text-sm font-semibold">/10</span></div>
                 </div>
             </div>
@@ -33,7 +31,7 @@ const MovieDetailsContainer=({movieInfo})=>{
                 }
             </div>
         </div>
-        <div className=" p-2 m-2 rounded-md sm:text-lg sm:my-5 bg-slate-400">
+        <div className=" p-2 m-2 rounded-md sm:text-lg sm:my-5 bg-slate-400 ">
             <span className="font-semibold">Overview</span> : {overview}
         </div> 
         </>

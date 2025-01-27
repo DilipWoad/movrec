@@ -6,22 +6,29 @@ import { addCreditsInfo, addDirector, addMovieInfo } from "../../slices/movieInf
 import MovieTrailerContainer from "./MovieTrailerContainer";
 import MovieDetailsContainer from "./MovieDetailsContainer";
 import SimilarMovieContainer from "./SimilarMovieContiner";
+import MovieActorsContainer from "./MovieActorsContainer";
 
 const MovieInfo=()=>{
     const dispatch = useDispatch();
     const movieData = useSelector((store)=>store?.movieInfo?.movieInfo)
-    console.log(movieData)
+    // console.log(movieData)
     
     const[searchParams,setSearchParams]  = useSearchParams();
     const movieId = searchParams.get("info");
 
     const movieCredits =async()=>{
         const data =  await fetch(MOVIE_INFO_URL+movieId+"/credits?language=en-US",options);
+
         const credits = await data.json();
-        dispatch(addCreditsInfo(credits.cast));
+
+        const actors = credits?.cast?.filter((actor)=>actor?.known_for_department==='Acting');
+        // console.log(actors);
+        dispatch(addCreditsInfo(actors));
+
         const director =  credits?.crew?.filter((person)=>person?.job==='Director');
         dispatch(addDirector(director));
-        console.log(director);
+
+        // console.log(director);
         console.log(credits);
     }
     const movieInformation = async()=>{
@@ -41,6 +48,7 @@ const MovieInfo=()=>{
         <MovieTrailerContainer movieId={movieId}/>
         {movieData && <MovieDetailsContainer movieInfo={movieData}/>}
         {/* actors */}
+        <MovieActorsContainer/>
         <SimilarMovieContainer movieId={movieId}/>
         {/* similar movies and trailer not changing */}
     </div>

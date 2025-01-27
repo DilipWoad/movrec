@@ -8,6 +8,8 @@ const AVATAR_LOGO =
 
 const MOVIE_IMG = "https://image.tmdb.org/t/p/w200";
 
+const ACTOR_EMPTY_ICON = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
+
 const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
   { identifier: "hindi", name: "Hindi" },
@@ -19,5 +21,6 @@ export {
   NETFLIX_BACKGROUND,
   AVATAR_LOGO,
   MOVIE_IMG,
-  SUPPORTED_LANGUAGES
+  SUPPORTED_LANGUAGES,
+  ACTOR_EMPTY_ICON
 };

@@ -4,7 +4,7 @@ import { useMovieInfoTrailer } from "../../hooks/movieInfoHooks/useMovieInfoTrai
 const MovieTrailerContainer=({movieId})=>{
     const trailer = useSelector((store)=>store?.movieInfo?.trailerVideo);
     useMovieInfoTrailer(movieId);
-    console.log(trailer)
+    // console.log(trailer)
     return(
         <div className="bg-black my-2 px-2 h-48 w-full sm:h-[350px]  flex items-center justify-center sm:mx-2 rounded-xl">
             <div className="w-full sm:w-[600px]">
