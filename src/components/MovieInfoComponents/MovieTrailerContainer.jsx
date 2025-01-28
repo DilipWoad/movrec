@@ -6,7 +6,7 @@ const MovieTrailerContainer=({movieId})=>{
     useMovieInfoTrailer(movieId);
     // console.log(trailer)
     return(
-        <div className="bg-black mb-4 h-48 w-full sm:h-[350px]  flex items-center justify-center sm: rounded-xl">
+        <div className="bg-black mt-4 sm:mt-0 mb-4 h-48 w-full sm:h-[350px]  flex items-center justify-center sm: rounded-xl">
             <div className="w-full sm:w-[600px]">
                 {<iframe
                 className="w-full aspect-video rounded-lg"
