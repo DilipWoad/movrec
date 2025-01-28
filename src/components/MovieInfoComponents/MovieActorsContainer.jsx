@@ -7,7 +7,7 @@ const MovieActorsContainer = () => {
   console.log(actors);
 
   return (
-    <div className="mx-2 mb-4 h-auto rounded-lg p-2 flex overflow-x-scroll gap-2">
+    <div className="mb-5 bg-gray-500 h-auto rounded-lg p-2 flex overflow-x-scroll gap-2">
       {actors &&
         actors.map((actor) => (
           <MovieActorCard

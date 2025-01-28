@@ -6,10 +6,10 @@ const MovieTrailerContainer=({movieId})=>{
     useMovieInfoTrailer(movieId);
     // console.log(trailer)
     return(
-        <div className="bg-black my-2 px-2 h-48 w-full sm:h-[350px]  flex items-center justify-center sm:mx-2 rounded-xl">
+        <div className="bg-black mb-4 h-48 w-full sm:h-[350px]  flex items-center justify-center sm: rounded-xl">
             <div className="w-full sm:w-[600px]">
                 {<iframe
-                className="w-full aspect-video bg-black "
+                className="w-full aspect-video rounded-lg"
                 src={"https://www.youtube.com/embed/"+`${trailer?.key}`+"?rel=0&mute=0&autoplay=0&controls=0&playsinline=1"}
                 title="YouTube video player"
                 frameBorder="0"

@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { options } from "../../utils/TMDBurls/tmdbUrls";
-import {useDispatch,useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { addTrailerVid } from "../../slices/movieInfoSlice";
 
 export const useMovieInfoTrailer=(movieId)=>{
-    const trailer = useSelector(store=>store.movieInfo?.trailerVideo)
     const dispatch = useDispatch();
     const backgroundVideo = async () => {
     const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
@@ -20,6 +19,6 @@ export const useMovieInfoTrailer=(movieId)=>{
     dispatch(addTrailerVid(movieVid));
   };
   useEffect(() => {
-    !trailer && backgroundVideo();
-  }, []);
+    backgroundVideo();
+  },[movieId]);
 }

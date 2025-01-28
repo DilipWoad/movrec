@@ -6,34 +6,38 @@ const MovieDetailsContainer=({movieInfo})=>{
     const directed = useSelector((store)=>store?.movieInfo?.director);
     return(
         <>
-        <div className="bg-slate-300 w-[100%] p-2 flex space-x-1 sm:mx-2 rounded-xl">
-            <div className="  flex  w-40">
-                <div className="w-full">
-                    <img className="hover:shadow-2xl hover:shadow-black rounded-lg" src={MOVIE_IMG+poster_path} alt="movie_poster" />
-                    <div className="mt-2 text-lg sm:text-3xl font-bold">{vote_average}<span className="text-sm font-semibold">/10</span></div>
+        <div className=" w-[100%] py-2 sm:flex sm:space-x-1 rounded-xl my-2 md:mb-0">
+            <div className="bg-slate-400 flex p-2 gap-2 rounded-lg text-wrap sm:text-nowrap">
+                <div className="flex  w-40">
+                    <div className="w-full">
+                        <img className="hover:shadow-2xl hover:shadow-black rounded-lg" src={MOVIE_IMG+poster_path} alt="movie_poster" />
+                        <div className="mt-2 text-lg sm:text-3xl font-bold">{vote_average}<span className="text-lg font-semibold">/10</span></div>
+                    </div>
+                </div>
+                <div className="w-auto px-2 bg-slate-300 flex flex-col rounded-lg">
+                    <div className=" flex-1 flex flex-col px-2 justify-between">
+                        <div className="text-xl sm:text-3xl font-semibold sm:h-20 flex flex-col justify-between">
+                            <div>{title}</div>
+                            <div className="text-sm sm:text-lg font-medium">{`(${release_date.substring(0,4)})`}</div>
+                        </div>
+                        <div className="text-[16px] sm:text-lg  h-20 ">
+                            <span className="font-semibold sm:font-bold">Generes</span> : {genres && genres.map((genre)=>genre.name).join(',')}
+                        </div>
+                    </div>
+                    {
+                    directed && <div className="px-2  sm:h-[68px] sm:text-lg">
+                                    <span className="text-[15px] sm:text-lg font-bold">Directed By:-</span> {directed[0]?.name}
+                                </div>
+                    }
                 </div>
             </div>
-            <div className="w-60 px-2 flex flex-col">
-                <div className=" pb-2 ">
-                    <div className="text-xl font-semibold">
-                    {title}
-                    </div>
-                    <div className=" mt-4 ">Year : {release_date}</div>
-                </div>
-                
-                <div className="mt-8">
-                   <span className="font-bold">Generes</span> : {genres && genres.map((genre)=>genre.name).join(',')}
-                </div>
-                {
-                    directed && <div className="mt-10 font-semibold ">
-                    <span className="text-[15px] sm:text-lg font-bold">Directed By:-</span> {directed[0]?.name}
-                </div>
-                }
+            <div className="mt-1 sm:mt-0 p-2 rounded-md sm:text-lg bg-slate-400 ">
+                <span className="font-semibold text-xl">Overview :</span>  {overview}
             </div>
         </div>
-        <div className=" p-2 m-2 rounded-md sm:text-lg sm:my-5 bg-slate-400 ">
-            <span className="font-semibold">Overview</span> : {overview}
-        </div> 
+        {/* <div className="p-2 my-2  rounded-md sm:text-lg sm:my-5 bg-slate-400 ">
+            <span className="font-semibold text-xl">Overview :</span>  {overview}
+        </div>  */}
         </>
         
     )
