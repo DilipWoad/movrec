@@ -25,20 +25,11 @@ const SimilarMovieContainer=({movieId})=>{
                 <span className="sm:text-2xl text-lg ">Similar Movies</span>
             </div>
             <div className="flex flex-wrap justify-center mt-5 gap-3">
-                {similar && similar.map((movie)=><Link key={movie?.id} to={{pathname:'/movie',search:`info=${movie?.id}`}}>{movie?.poster_path &&<MovieCard poster={movie?.poster_path} css={" md:min-w-60 md:h-auto md:flex md:justify-center hover:cursor-default "} postercss={"md:h-56 rounded-md hover:cursor-pointer"}/>}</Link> ) }
-                {
-                    !viewMore ? <div onClick={()=>setViewMore(!viewMore)} className=" text-white w-24 md:w-32 md:py-2 md:px-1 pr-2 hover:cursor-pointer rounded-md bg-gray-400 flex justify-center items-center hover:bg-gray-500">
-                                    <div className="md:text-3xl text-lg text-center">
-                                        Page 2→
-                                    </div>
-                                </div> 
-                                : 
-                                <div onClick={()=>setViewMore(!viewMore)} className=" text-white w-24 md:w-32 md:py-2 md:px-1 rounded-md pr-2 hover:cursor-pointer bg-gray-400 flex justify-center items-center hover:bg-gray-500">
-                                    <div className="md:text-3xl text-lg text-center">
-                                    ←Page 1
-                                    </div>
-                                </div>
-                }
+                {similar && similar.map((movie)=><Link key={movie?.id} to={{pathname:'/movie',search:`info=${movie?.id}`}}>{movie?.poster_path &&<MovieCard poster={movie?.poster_path} css={"min-w-32 flex md:p-2 rounded-lg md:min-w-60 md:h-auto md:flex md:justify-center hover:cursor-default "} postercss={"min-w-32 md:h-56 rounded-md hover:cursor-pointer"}/>}</Link> ) }
+            </div>
+            <div className="flex gap-4 mt-5 text-lg justify-center">
+                <div onClick={()=>setViewMore(!viewMore)} className={`${viewMore ? 'text-gray-500 hover:cursor-pointer hover:border-b-[1px] hover:border-white' : 'text-white border-b-[1px]'}  p-2 `}>1</div>
+                <div onClick={()=>setViewMore(!viewMore)} className={`${!viewMore ? 'text-gray-500 hover:cursor-pointer hover:border-b-[1px] hover:border-white' : 'text-white border-b-[1px]'}  p-2 `}>2</div>
             </div>
         </div>
     )

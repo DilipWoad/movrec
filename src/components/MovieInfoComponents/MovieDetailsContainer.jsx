@@ -17,11 +17,11 @@ const MovieDetailsContainer=({movieInfo})=>{
                 <div className="min-w-24 w-full sm:w-auto px-2 bg-slate-300 flex flex-col rounded-lg">
                     <div className=" flex-1 flex flex-col px-2 justify-between">
                         <div className="text-xl sm:text-3xl font-semibold sm:h-20 flex flex-col justify-between">
-                            <div>{title}</div>
+                            <div className="md:w-96 md:text-wrap">{title}</div>
                             <div className="text-sm sm:text-lg font-medium">{`(${release_date.substring(0,4)})`}</div>
                         </div>
-                        <div className="text-sm sm:text-lg  h-20 text-wrap ">
-                            <span className="font-bold">Generes</span> : {genres && genres.map((genre)=>genre.name).join(',')}
+                        <div className="text-sm sm:text-lg  h-20 bg-purple-400">
+                            <span className="font-bold">Generes : </span>{genres && genres.map((genre)=>genre.name).join(', ')}
                         </div>
                     </div>
                     {
