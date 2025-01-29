@@ -20,7 +20,7 @@ const MovieDetailsContainer=({movieInfo})=>{
                             <div className="md:w-96 md:text-wrap">{title}</div>
                             <div className="text-sm sm:text-lg font-medium">{`(${release_date.substring(0,4)})`}</div>
                         </div>
-                        <div className="text-sm sm:text-lg  h-20 bg-purple-400">
+                        <div className="text-sm sm:text-lg  h-20">
                             <span className="font-bold">Generes : </span>{genres && genres.map((genre)=>genre.name).join(', ')}
                         </div>
                     </div>
