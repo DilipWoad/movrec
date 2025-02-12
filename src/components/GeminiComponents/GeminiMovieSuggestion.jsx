@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieUtilsComponents/MovieCard";
 // import googleGemini from "../Gemini/googleGemini.js"
 
 const GeminiMovieSuggestion=()=>{

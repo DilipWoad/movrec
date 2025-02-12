@@ -1,8 +1,8 @@
-import Browse from "./Browse";
-import Login from "./Login";
+import Browse from "./Browse.jsx";
+import Login from "../Header/Login.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import PrivateRoute from "./PrivateRoute.jsx";
-import MovieInfo from "./MovieInfoComponents/MovieInfo.jsx";
+import PrivateRoute from "../MovieUtilsComponents/PrivateRoute.jsx";
+import MovieInfo from "../MovieInfoComponents/MovieInfo.jsx";
 const Body = () => {
   const bodyRoutes = createBrowserRouter([
     {
@@ -18,13 +18,13 @@ const Body = () => {
       ),
     },
     {
-      path:"/movie",
-      element:(
+      path: "/movie",
+      element: (
         <PrivateRoute>
           <MovieInfo />
         </PrivateRoute>
-      )
-    }
+      ),
+    },
   ]);
 
   return (

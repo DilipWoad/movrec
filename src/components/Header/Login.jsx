@@ -1,21 +1,21 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
-import { formValidation } from "../utils/FormValidation/formValidation";
-import { auth } from "../utils/Firebase/firebase.js";
+import { formValidation } from "../../utils/FormValidation/formValidation.js";
+import { auth } from "../../utils/Firebase/firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../slices/userSlice.js";
-import { AVATAR_LOGO, NETFLIX_BACKGROUND } from "../utils/constant.js";
-import { AddErrorMessage } from "../slices/errorSlice.js";
+import { addUser } from "../../slices/userSlice.js";
+import { AVATAR_LOGO, NETFLIX_BACKGROUND } from "../../utils/constant.js";
+import { AddErrorMessage } from "../../slices/errorSlice.js";
 // import { useUserSignInAuthentication, useUserSignUpAuthentication } from "../hooks/useUserAuthentication.js";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const error = useSelector((store)=>store?.error?.errorMessage);
+  const error = useSelector((store) => store?.error?.errorMessage);
 
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
@@ -24,20 +24,20 @@ const Login = () => {
   const [signUp, setSignUp] = useState(false);
 
   const handleSignUp = () => {
-    setSignUp(!signUp) ;
+    setSignUp(!signUp);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-  const email = emailRef?.current?.value;
-  const password = passwordRef?.current?.value;
-  const fullName = fullNameRef?.current?.value;
+    const email = emailRef?.current?.value;
+    const password = passwordRef?.current?.value;
+    const fullName = fullNameRef?.current?.value;
 
-  //   //check correct email & pass format
-     const validAns = formValidation(email, password);
+    //   //check correct email & pass format
+    const validAns = formValidation(email, password);
 
-     dispatch(AddErrorMessage(validAns));
+    dispatch(AddErrorMessage(validAns));
 
     //useHook start here
     if (signUp) {
@@ -48,7 +48,7 @@ const Login = () => {
           const user = userData.user;
           updateProfile(user, {
             displayName: fullName,
-            photoURL:AVATAR_LOGO,
+            photoURL: AVATAR_LOGO,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -59,12 +59,11 @@ const Login = () => {
             });
         })
         .catch((error) => {
-          console.log(error.message)
+          console.log(error.message);
           // dispatch(AddErrorMessage(error.message));
         });
 
-        
-        ////////////////////// FOR HOOK //////////////////////////////
+      ////////////////////// FOR HOOK //////////////////////////////
 
       // try {
       //   const { uid, email, displayName, photoURL } = useUserSignUpAuthentication(emailR,password,fullName);
@@ -74,8 +73,6 @@ const Login = () => {
       // }
 
       ////////////////////// FOR HOOK //////////////////////////////
-
-
     } else {
       //Sign In logic
       signInWithEmailAndPassword(auth, email, password)
@@ -95,13 +92,14 @@ const Login = () => {
       // }
 
       ////////////////////// FOR HOOK //////////////////////////////
-    } 
-  }
+    }
+  };
   return (
     <div>
       <Header />
       <div className="absolute">
-        <img className="h-screen object-cover md:w-screen "
+        <img
+          className="h-screen object-cover md:w-screen "
           src={NETFLIX_BACKGROUND}
           alt="background"
         />
@@ -132,7 +130,7 @@ const Login = () => {
           ref={passwordRef}
         />
         {error !== null && (
-          <p className="text-red-500 text-sm font-semibold">{error}</p>//Add Error Message
+          <p className="text-red-500 text-sm font-semibold">{error}</p> //Add Error Message
         )}
         <button
           className="bg-red-700 text-white w-full p-2 my-6 font-semibold rounded-md"

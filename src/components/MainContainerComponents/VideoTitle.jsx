@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MovieCard from "./MovieCard";
+import MovieCard from "../MovieUtilsComponents/MovieCard";
 
 const VideoTitle = ({ title,overview,poster,movieId}) => {
   const [description, setDescription] = useState(false);

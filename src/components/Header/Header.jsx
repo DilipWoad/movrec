@@ -1,11 +1,11 @@
 import { signOut } from "firebase/auth";
-import { auth } from "../utils/Firebase/firebase";
+import { auth } from "../../utils/Firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { SUPPORTED_LANGUAGES } from "../utils/constant";
-import { useHeaderAuthState } from "../hooks/useHeaderAuthState";
-import { changeGeminiState } from "../slices/geminiSearchSlice";
-import { changeLanguage } from "../slices/languageSlice";
-import logo from '../assets/images/MovrecLogoCopy.png'
+import { SUPPORTED_LANGUAGES } from "../../utils/constant";
+import { useHeaderAuthState } from "../../hooks/useHeaderAuthState";
+import { changeGeminiState } from "../../slices/geminiSearchSlice";
+import { changeLanguage } from "../../slices/languageSlice";
+import logo from '../../assets/images/MovrecLogoCopy.png'
 
 const Header = () => {
   const dispatch = useDispatch();

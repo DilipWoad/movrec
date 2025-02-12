@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MOVIE_INFO_URL, options } from "../../utils/TMDBurls/tmdbUrls";
 import { useDispatch, useSelector } from "react-redux";
 import { addSimilarMovies } from "../../slices/movieInfoSlice";
-import MovieCard from "../MovieCard";
+import MovieCard from "../MovieUtilsComponents/MovieCard";
 
 const SimilarMovieContainer=({movieId})=>{
     const[viewMore,setViewMore] = useState(false)

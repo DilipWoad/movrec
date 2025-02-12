@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { lang } from "../utils/constLanguage";
+import { lang } from "../../utils/constLanguage";
 import { useRef } from "react";
-import { addGeminiMovies } from "../slices/geminiSearchSlice";
-import useGeminiSearch from "../hooks/useGeminiSearch";
-import { AddErrorMessage } from "../slices/errorSlice";
+import { addGeminiMovies } from "../../slices/geminiSearchSlice";
+import useGeminiSearch from "../../hooks/useGeminiSearch";
+import { AddErrorMessage } from "../../slices/errorSlice";
 
 const GeminiSearchBar=()=>{
     const dispatch = useDispatch();

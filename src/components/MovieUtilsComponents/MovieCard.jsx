@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { MOVIE_IMG } from "../utils/constant";
+import { MOVIE_IMG } from "../../utils/constant";
 
 const MovieCard=({poster,css,postercss,movieId})=>{
     return(

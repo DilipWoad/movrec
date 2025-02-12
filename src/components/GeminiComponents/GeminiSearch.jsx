@@ -1,6 +1,6 @@
-import { NETFLIX_BACKGROUND } from "../utils/constant";
-import GeminiMovieSuggestion from "./GeminiMovieSuggestion";
-import GeminiSearchBar from "./GeminiSearchBar";
+import { NETFLIX_BACKGROUND } from "../../utils/constant";
+import GeminiMovieSuggestion from "../GeminiComponents/GeminiMovieSuggestion";
+import GeminiSearchBar from "../GeminiComponents/GeminiSearchBar";
 
 const GeminiSearch=()=>{
     return(
