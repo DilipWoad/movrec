@@ -15,6 +15,7 @@ const MovieActorsContainer = () => {
             name={actor.name}
             character={actor.character}
             profile={actor.profile_path}
+            personId={actor.id}
           />
         ))}
     </div>

@@ -7,9 +7,11 @@ import MovieTrailerContainer from "./MovieTrailerContainer";
 import MovieDetailsContainer from "./MovieDetailsContainer";
 import SimilarMovieContainer from "./SimilarMovieContiner";
 import MovieActorsContainer from "./MovieActorsContainer";
+import { emptyActorDetails } from "../../slices/actorDetailSlice";
 
 const MovieInfo=()=>{
     const dispatch = useDispatch();
+    const deleteActorInfoFromStore = useSelector((store)=>store.actor);
     const movieData = useSelector((store)=>store?.movieInfo?.movieInfo)
     // console.log(movieData)
     
@@ -40,6 +42,7 @@ const MovieInfo=()=>{
         movieCredits();
         movieInformation();
         window.scrollTo(0,0);
+        deleteActorInfoFromStore && dispatch(emptyActorDetails());
     },[movieId])
     if(!movieId) return;
     return(

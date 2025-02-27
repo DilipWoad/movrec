@@ -16,6 +16,8 @@ const SEARCH_MOVIE_URL =
 const MOVIE_INFO_URL = 'https://api.themoviedb.org/3/movie/';
 // const MOVIE_INFO_URL = 'https://api.themoviedb.org/3/movie/';
 
+const MOVIE_ACTOR_DETAILS = 'https://api.themoviedb.org/3/person/';
+
   const options = {
     method: "GET",
     headers: {
@@ -31,5 +33,6 @@ export{
     UPCOMING_URL,
     SEARCH_MOVIE_URL,
     MOVIE_INFO_URL,
+    MOVIE_ACTOR_DETAILS,
     options
 }

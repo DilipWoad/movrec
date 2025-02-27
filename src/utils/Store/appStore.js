@@ -6,6 +6,7 @@ import authReducer from "../../slices/authenticateSlice";
 import geminiReducer from "../../slices/geminiSearchSlice";
 import languageReducer from "../../slices/languageSlice";
 import movieInfoReducer from "../../slices/movieInfoSlice";
+import actorInfoReducer from "../../slices/actorDetailSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const appStore = configureStore({
     gemini: geminiReducer,
     lang : languageReducer,
     movieInfo : movieInfoReducer,
+    actor : actorInfoReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
