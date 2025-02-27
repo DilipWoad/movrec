@@ -18,7 +18,7 @@ const ActorInformation=()=>{
        dispatch(addActorDetails(data));
     }
     useEffect(()=>{
-        actorDetails();
+        !actorInformation && actorDetails();
     },[])
 
     if (!actorInformation) return;
