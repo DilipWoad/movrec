@@ -2,16 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const actorDetailSlice = createSlice({
     name:'actorDetails',
-    initialState:null,
+    initialState:{
+        details:null,
+        credits:null,
+    },
     reducers:{
         addActorDetails:(state,action)=>{
-            return action.payload
+            state.details = action.payload
+        },
+        addActorCredits:(state,action)=>{
+            state.credits = action.payload
         },
         emptyActorDetails:(state,action)=>{
-            return null
+            state.credits = null;
+            state.details = null;
         }
     }
 })
 
 export default actorDetailSlice.reducer;
-export const {addActorDetails,emptyActorDetails} = actorDetailSlice.actions;
+export const {addActorDetails,addActorCredits,emptyActorDetails} = actorDetailSlice.actions;
