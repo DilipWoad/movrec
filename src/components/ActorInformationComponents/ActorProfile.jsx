@@ -26,7 +26,7 @@ const ActorProfile = () => {
         <h1>Born At : {actorDetails?.place_of_birth}</h1>
       </div>
       <div className="bg-purple-400 p-2">
-        <p className="font-semibold text-lg">
+        <p className="font-semibold text-lg text-justify p-2">
           Biography : {readMore ? overview : overview.substring(0, 300)}{" "}
           <span
             onClick={() => setReadMore(!readMore)}

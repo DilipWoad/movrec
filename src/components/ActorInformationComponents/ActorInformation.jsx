@@ -21,8 +21,6 @@ const ActorInformation=()=>{
        const detailsData = await personDetail.json();
        const creditsData = await personCredits.json();
 
-       console.log(detailsData);
-       console.log(creditsData);
        dispatch(addActorDetails(detailsData));
        dispatch(addActorCredits(creditsData))
     }
@@ -32,7 +30,7 @@ const ActorInformation=()=>{
 
     if (!actorInformation?.details) return;
     return(
-        <div>
+        <div className="m-2">
             <ActorProfile/>
             <ActorCredits/>
         </div>
