@@ -32,7 +32,7 @@ const ActorCredits = () => {
         { movieCredits.cast.length >= count &&
             <div
             onClick={() => {setViewAll(!viewAll), setcount(!viewAll? movieCredits.cast.length : 11)}}
-            className=" flex m-2 w-[99px] items-center text-center justify-center md:w-40"
+            className=" flex m-2 w-[99px] items-center text-center justify-center md:w-40 hover:cursor-pointer "
           >
             <div className="bg-red-300 w-full h-16 rounded-lg flex justify-center items-center text-lg md:text-xl font-semibold text-nowrap">
             {viewAll ? "View Less" : "View All"}
