@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { MOVIE_ACTOR_DETAILS, options } from "../../utils/TMDBurls/tmdbUrls";
 import { useDispatch, useSelector } from "react-redux";
 import { addActorCredits, addActorDetails } from "../../slices/actorDetailSlice";
-import ActorCredits from "./ActorCredits";
 import ActorProfile from "./ActorProfile";
 
 const ActorInformation=()=>{
@@ -32,7 +31,7 @@ const ActorInformation=()=>{
     return(
         <div className="m-2">
             <ActorProfile/>
-            <ActorCredits/>
+            
         </div>
     )
 }
