@@ -6,6 +6,7 @@ import { useHeaderAuthState } from "../../hooks/useHeaderAuthState";
 import { changeGeminiState } from "../../slices/geminiSearchSlice";
 import { changeLanguage } from "../../slices/languageSlice";
 import logo from '../../assets/images/MovrecLogoCopy.png'
+import { Link } from "react-router";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,8 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-black relative  md:absolute px-[54px] py-2 md:bg-gradient-to-b md:from-black z-50 w-screen flex flex-col md:flex-row items-center md:justify-between">
-      <img className="w-48 mb-5" src={logo} alt="logo" />
+    <div className="bg-black relative  md:absolute px-[54px] py-2 md:bg-gradient-to-b md:from-black z-50 w-full flex flex-col md:flex-row items-center md:justify-between">
+      <Link to={'/browse'}><img className="w-48 mb-5" src={logo} alt="logo" /></Link>
       {auth.currentUser && (
         <div className="flex w-full md:items-center justify-between  md:w-[28%]">
           {geminiStatus && (
@@ -52,7 +53,7 @@ const Header = () => {
             }`}
             onClick={handleGemini}
           >
-            {geminiStatus ? "Home🏠︎" : "Gemini✧"}
+            {geminiStatus ? <Link to={'/browse'}>Home🏠︎</Link> :<Link>Gemini✧</Link>}
           </button>
           <img className="w-10 h-10 hidden md:block" src={userData?.photoURL} alt="user-icon" />
           <button

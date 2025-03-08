@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useParams } from "react-router";
+import {useParams } from "react-router";
 import { MOVIE_ACTOR_DETAILS, options } from "../../utils/TMDBurls/tmdbUrls";
 import { useDispatch, useSelector } from "react-redux";
 import { addActorCredits, addActorDetails } from "../../slices/actorDetailSlice";
 import ActorProfile from "./ActorProfile";
+
 
 const ActorInformation=()=>{
     const dispatch = useDispatch();
@@ -29,9 +30,8 @@ const ActorInformation=()=>{
 
     if (!actorInformation?.details) return;
     return(
-        <div className="m-2">
+        <div className="md:pt-24">  
             <ActorProfile/>
-            
         </div>
     )
 }

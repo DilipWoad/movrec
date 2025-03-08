@@ -16,7 +16,6 @@ const Browse = () => {
   useUpcomingMovies();
   return (
     <div className="">
-      <Header />
       {geminiStatus ? (
         <GeminiSearch />
       ) : (

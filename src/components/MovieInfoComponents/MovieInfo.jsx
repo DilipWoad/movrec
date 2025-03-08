@@ -46,7 +46,7 @@ const MovieInfo=()=>{
     },[movieId])
     if(!movieId) return;
     return(
-        movieId && <div className="p-2 md:p-4">
+        movieId && <div className="p-2 md:pt-24 ">
         {/* Movie Information of ID : {movieId} */}
         <MovieTrailerContainer movieId={movieId}/>
         {movieData && <MovieDetailsContainer movieInfo={movieData}/>}
