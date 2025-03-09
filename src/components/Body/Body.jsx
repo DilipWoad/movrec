@@ -14,30 +14,32 @@ const Body = () => {
     },
     {
       path: "/",
-      element: <Layout />,
+      element: <PrivateRoute>
+        <Layout />
+      </PrivateRoute>,
       children: [
         {
           path: "/browse",
           element: (
-            <PrivateRoute>
+            
               <Browse />
-            </PrivateRoute>
+            
           ),
         },
         {
           path: "/movie",
           element: (
-            <PrivateRoute>
+            
               <MovieInfo />
-            </PrivateRoute>
+            
           ),
         },
         {
           path: "/person/:personId",
           element: (
-            <PrivateRoute>
+            
               <ActorInformation />
-            </PrivateRoute>
+           
           ),
         },
       ],
