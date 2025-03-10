@@ -6,7 +6,7 @@ import { useTopRatedMovies } from "../../hooks/useTopRatedMovies";
 import { useUpcomingMovies } from "../../hooks/useUpcomingMovies";
 import GeminiSearch from "../GeminiComponents/GeminiSearch";
 import { useSelector } from "react-redux";
-import {useEmptyMovieDetails} from "../../hooks/useEmptyMovieDetails"
+import { useEmptyMovieDetails } from "../../hooks/useEmptyMovieDetails";
 const Browse = () => {
   const geminiStatus = useSelector((store) => store?.gemini?.GeminiStatus);
   useNowPlayingMovies();

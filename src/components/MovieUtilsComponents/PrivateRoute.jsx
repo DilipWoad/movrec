@@ -23,7 +23,6 @@ const PrivateRoute = ({ children }) => {
     return () => unsubscribe();
   }, [dispatch]);
 
-
   //checking before UseEffect
   if (!authChecked) {
     return (
@@ -38,7 +37,7 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  return userAuth ? children : <Navigate to={"/"} />
+  return userAuth ? children : <Navigate to={"/"} />;
 };
 
 export default PrivateRoute;

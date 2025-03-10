@@ -1,61 +1,74 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router";
 import { MOVIE_INFO_URL, options } from "../../utils/TMDBurls/tmdbUrls";
-import { useDispatch,useSelector } from "react-redux";
-import { addCreditsInfo, addDirector, addMovieInfo } from "../../slices/movieInfoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addCreditsInfo,
+  addDirector,
+  addMovieInfo,
+} from "../../slices/movieInfoSlice";
 import MovieTrailerContainer from "./MovieTrailerContainer";
 import MovieDetailsContainer from "./MovieDetailsContainer";
 import SimilarMovieContainer from "./SimilarMovieContiner";
 import MovieActorsContainer from "./MovieActorsContainer";
 import { emptyActorDetails } from "../../slices/actorDetailSlice";
 
-const MovieInfo=()=>{
-    const dispatch = useDispatch();
-    const deleteActorInfoFromStore = useSelector((store)=>store.actor);
-    const movieData = useSelector((store)=>store?.movieInfo?.movieInfo)
-    // console.log(movieData)
-    
-    const[searchParams,setSearchParams]  = useSearchParams();
-    const movieId = searchParams.get("info");
+const MovieInfo = () => {
+  const dispatch = useDispatch();
+  const deleteActorInfoFromStore = useSelector((store) => store.actor);
+  const movieData = useSelector((store) => store?.movieInfo?.movieInfo);
+  // console.log(movieData)
 
-    const movieCredits =async()=>{
-        const data =  await fetch(MOVIE_INFO_URL+movieId+"/credits?language=en-US",options);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movieId = searchParams.get("info");
 
-        const credits = await data.json();
+  const movieCredits = async () => {
+    const data = await fetch(
+      MOVIE_INFO_URL + movieId + "/credits?language=en-US",
+      options
+    );
 
-        const actors = credits?.cast?.filter((actor)=>actor?.known_for_department==='Acting');
-        // console.log(actors);
-        dispatch(addCreditsInfo(actors));
+    const credits = await data.json();
 
-        const director =  credits?.crew?.filter((person)=>person?.job==='Director');
-        dispatch(addDirector(director));
+    const actors = credits?.cast?.filter(
+      (actor) => actor?.known_for_department === "Acting"
+    );
+    // console.log(actors);
+    dispatch(addCreditsInfo(actors));
 
-        // console.log(director);
-        console.log(credits);
-    }
-    const movieInformation = async()=>{
-        const data = await fetch(MOVIE_INFO_URL+movieId,options);
-        const movieInfo = await data.json();
-        dispatch(addMovieInfo(movieInfo));
-    }
-    useEffect(()=>{
-        movieCredits();
-        movieInformation();
-        window.scrollTo(0,0);
-        deleteActorInfoFromStore && dispatch(emptyActorDetails());
-    },[movieId])
-    if(!movieId) return;
-    return(
-        movieId && <div className="p-2 md:pt-24 ">
+    const director = credits?.crew?.filter(
+      (person) => person?.job === "Director"
+    );
+    dispatch(addDirector(director));
+
+    // console.log(director);
+    console.log(credits);
+  };
+  const movieInformation = async () => {
+    const data = await fetch(MOVIE_INFO_URL + movieId, options);
+    const movieInfo = await data.json();
+    dispatch(addMovieInfo(movieInfo));
+  };
+  useEffect(() => {
+    movieCredits();
+    movieInformation();
+    window.scrollTo(0, 0);
+    deleteActorInfoFromStore && dispatch(emptyActorDetails());
+  }, [movieId]);
+  if (!movieId) return;
+  return (
+    movieId && (
+      <div className="p-2 md:pt-24 ">
         {/* Movie Information of ID : {movieId} */}
-        <MovieTrailerContainer movieId={movieId}/>
-        {movieData && <MovieDetailsContainer movieInfo={movieData}/>}
+        <MovieTrailerContainer movieId={movieId} />
+        {movieData && <MovieDetailsContainer movieInfo={movieData} />}
         {/* actors */}
-        <MovieActorsContainer/>
-        <SimilarMovieContainer movieId={movieId}/>
+        <MovieActorsContainer />
+        <SimilarMovieContainer movieId={movieId} />
         {/* similar movies and trailer not changing */}
-    </div>
+      </div>
     )
-}
+  );
+};
 
 export default MovieInfo;

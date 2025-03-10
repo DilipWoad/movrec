@@ -5,7 +5,7 @@ import { SUPPORTED_LANGUAGES } from "../../utils/constant";
 import { useHeaderAuthState } from "../../hooks/useHeaderAuthState";
 import { changeGeminiState } from "../../slices/geminiSearchSlice";
 import { changeLanguage } from "../../slices/languageSlice";
-import logo from '../../assets/images/MovrecLogoCopy.png'
+import logo from "../../assets/images/MovrecLogoCopy.png";
 import { Link } from "react-router";
 
 const Header = () => {
@@ -30,7 +30,9 @@ const Header = () => {
 
   return (
     <div className="bg-black relative  md:absolute px-[54px] py-2 md:bg-gradient-to-b md:from-black z-50 w-full flex flex-col md:flex-row items-center md:justify-between">
-      <Link to={'/browse'}><img className="w-48 mb-5" src={logo} alt="logo" /></Link>
+      <Link to={"/browse"}>
+        <img className="w-48 mb-5" src={logo} alt="logo" />
+      </Link>
       {auth.currentUser && (
         <div className="flex w-full md:items-center justify-between  md:w-[28%]">
           {geminiStatus && (
@@ -47,21 +49,29 @@ const Header = () => {
             </select>
           )}
           <div className="md:flex md:items-center md:justify-end flex  w-full justify-between">
-          <button
-            className={`bg-blue-800 md:mx-3 py-1 px-2 rounded-md text-sm md:text-lg ${
-              geminiStatus && "bg-red-700 text-white"
-            }`}
-            onClick={handleGemini}
-          >
-            {geminiStatus ? <Link to={'/browse'}>Home🏠︎</Link> :<Link>Gemini✧</Link>}
-          </button>
-          <img className="w-10 h-10 hidden md:block" src={userData?.photoURL} alt="user-icon" />
-          <button
-            onClick={handleLogout}
-            className="bg-red-700 w-100  text-white px-2 py-1 rounded-md md:mx-3 text-sm md:text-lg"
-          >
-            Sign Out
-          </button>
+            <button
+              className={`bg-blue-800 md:mx-3 py-1 px-2 rounded-md text-sm md:text-lg ${
+                geminiStatus && "bg-red-700 text-white"
+              }`}
+              onClick={handleGemini}
+            >
+              {geminiStatus ? (
+                <Link to={"/browse"}>Home🏠︎</Link>
+              ) : (
+                <Link>Gemini✧</Link>
+              )}
+            </button>
+            <img
+              className="w-10 h-10 hidden md:block"
+              src={userData?.photoURL}
+              alt="user-icon"
+            />
+            <button
+              onClick={handleLogout}
+              className="bg-red-700 w-100  text-white px-2 py-1 rounded-md md:mx-3 text-sm md:text-lg"
+            >
+              Sign Out
+            </button>
           </div>
         </div>
       )}

@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import MovieActorCard from "./MovieActorCard";
 
-
 const MovieActorsContainer = () => {
   const actors = useSelector((store) => store?.movieInfo?.credits);
 
